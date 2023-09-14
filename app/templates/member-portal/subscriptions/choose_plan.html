@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-gray-100 flex flex-col justify-center sm:py-12">
+  <div class="relative sm:max-w-xl sm:mx-auto">
+    <div class="relative px-4 bg-white shadow rounded-3xl sm:p-10">
+      <div class="max-w-md mx-auto">
+        <div class="flex items-center space-x-5">
+          <div class="block font-medium text-xl self-start text-gray-700">
+            <h2 class="leading-relaxed">Choose Your Plan</h2>
+            <p class="text-sm text-gray-500 font-normal leading-relaxed">Select the best plan that fits your needs.</p>
+          </div>
+        </div>
+        <div class="divide-y divide-gray-200 flex gap-8">
+            {% if plans %}
+              {% for plan in plans %}
+                <form action="{{ url_for('subscriptions.subscribe') }}" method="post">
+                  <div class="flex flex-col py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                    <p class="font-bold">{{ plan.plan_name }}</p>
+                    <p>${{ plan.price }}/month</p>
+                    <p>{{ plan.description }}</p>
+                    <input type="hidden" name="plan" value="{{ plan.plan_name }}">
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Subscribe</button>
+                  </div>
+                </form>
+              {% endfor %}
+            {% else %}
+            <div class="py-8 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
+              <p>No plans available to subscribe to at the moment.</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

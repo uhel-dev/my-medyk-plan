@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class="bg-gray-200">
+    <div class="container mx-auto">
+        {% include 'header.html' %}
+        {% include 'components/add_service_component.html' %}
+        {% include 'components/view_service_component.html' %}
+
+    </div>
+    <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+</body>
+</html>

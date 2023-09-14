@@ -1,0 +1,52 @@
+<div class="flex flex-col gap-8 pb-16">
+    <div class="bg-white p-4 rounded-md shadow-md">
+    <h2 class="text-xl font-bold mb-3">Earnings & Analytics</h2>
+
+    <div class="flex">
+        <!-- Monthly Earnings Chart -->
+        <div class="w-1/3 px-2 flex flex-col items-center">
+            <canvas id="monthlyEarningsChart" height="200"></canvas>
+        </div>
+
+        <!-- Sample Chart 1 -->
+        <div class="w-1/3 px-2 flex flex-col items-center">
+            <canvas id="sampleChart1" height="200"></canvas>
+        </div>
+
+        <!-- Sample Chart 2 -->
+        <div class="w-1/3 px-2 flex flex-col items-center">
+            <canvas id="sampleChart2" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white p-4 rounded-md shadow-md">
+    <h2 class="text-xl font-bold mb-3">Subscriptions List</h2>
+    <table id="subscriptionsTable" class="min-w-full table-auto">
+        <thead>
+            <tr class="bg-gray-300">
+                <th class="px-4 py-2">Full Name</th>
+                <th class="px-4 py-2">Email</th>
+                <th class="px-4 py-2">Start Date</th>
+                <th class="px-4 py-2">End Date</th>
+                <th class="px-4 py-2">Plan Name</th>
+                <th class="px-4 py-2">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subscription in subscriptions %}
+            <tr>
+                <td class="px-4 py-2">{{ subscription.full_name }}</td>
+                <td class="px-4 py-2">{{ subscription.email }}</td>
+                <td class="px-4 py-2">{{ subscription.start_date }}</td>
+                <td class="px-4 py-2">{{ subscription.end_date }}</td>
+                <td class="px-4 py-2">{{ subscription.plan_name }}</td>
+                <td class="px-4 py-2">£{{ subscription.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>

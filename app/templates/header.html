@@ -1,0 +1,118 @@
+<div>
+<!--    <div class="container mx-auto">-->
+    <div class="">
+        <div class="flex flex-col items-center justify-between font-medium">
+            <div class="flex w-full justify-between py-4 bg-blue-950">
+                <div class="flex items-center gap-4 px-[5vh] w-1/5">
+                    <a class="text-white" href="" target="_blank" rel="noreferrer">Help &amp; Support</a>
+                </div>
+                <div class="flex items-center justify-end gap-4 px-4 w-2/5">
+                    <a  class="text-white" href="https://edigitalsurvey.com/survey/enter/s/ESV-vn23-484613806/data3/new" target="_blank" rel="noreferrer">Feedback</a>
+                    {% if request.path == "/" %}
+                        {% if current_user.is_authenticated %}
+                            {% if current_user.role == "ADMIN" %}
+                                <a href="/admin-portal" class="p-2 w-[6vw] bg-medyk-purple text-white flex justify-center py-2 rounded rounded-2xl">
+                                    My account
+                                </a>
+                            {% else %}
+                                <a href="/member-portal" class="p-2 w-[6vw] bg-medyk-purple text-white flex justify-center py-2 rounded rounded-2xl">
+                                    My account
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <a href="/sign-in" class="p-2 w-[6vw] bg-medyk-purple text-white flex justify-center py-2 rounded rounded-2xl">
+                                <p>My account</p>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% if request.path != "/" %}
+                <div class="flex w-full items-center p-4 bg-white rounded-b-2xl shadow-lg justify-between">
+                <a href="/" class="w-1/5 p-4">
+                    <img src="{{ url_for('static', filename='images/logoeps.svg') }}" alt="My Medyk Logo">
+                </a>
+                {% if current_user.is_authenticated %}
+                <div class="w-1/5 flex gap-4 justify-end items-center relative">
+                    <p class="font-semibold">Hello</p>
+                    <div data-testid="setOpenOnClick" tabindex="0" class="relative">
+                        <div class="flex gap-4">
+                            <p class="font-semibold">{{ current_user.full_name}}</p>
+                            <img src="{{ url_for('static', filename='images/account-circle.svg') }}" alt="User" class="w-6 h-6 text-white">
+                            <img src="{{ url_for('static', filename='images/keyboard-arrow-down.svg') }}" alt="User Container" class="w-4 h-4 text-white absolute right-0 top-1/2 transform -translate-y-1/2">
+                        </div>
+                        <div data-testid="action" class="hidden mt-2 absolute right-0 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+                            <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/member-portal/personal-details/view">Personal Details</a>
+                            <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/member-portal/security-settings">Settings</a>
+                            <a href="/sign-out">
+                                <button class="flex items-center block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-200 flex" data-testid="SigningOut">
+                                <img src="{{ url_for('static', filename='images/logout.svg') }}" alt="Logout-icon" class="w-4 h-4 mr-2">
+                                <span>Sign out</span>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="w-1/5 flex gap-4 justify-end items-center">
+                    <div class="flex w-1/2">
+                        <a href="/sign-in" class="w-full bg-medyk-purple text-white flex justify-center py-2 rounded rounded-2xl">
+                            <p>My account</p>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                <script>
+                    const userMenu = document.querySelector('[data-testid="setOpenOnClick"]');
+                    const actionMenu = document.querySelector('[data-testid="action"]');
+
+                        userMenu.addEventListener('click', (e) => {
+                            actionMenu.classList.toggle('hidden');
+                            e.stopPropagation();
+                        });
+
+                        // Add an event listener to the document to hide the menu when clicking anywhere else
+                        document.addEventListener('click', (e) => {
+                            if (!userMenu.contains(e.target)) {
+                                actionMenu.classList.add('hidden');
+                            }
+                        });
+                </script>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% if current_user.is_authenticated %}
+    {% if "/member-portal" in request.path or "/admin-portal" in request.path  %}
+
+        {% if current_user.role == "ADMIN" %}
+        <div class="container mx-auto p-4">
+            <div class="flex space-x-4 text-xl">
+<!--                <a href="/" target="" class="text-gray-800 hover:text-gray-600">Home</a>-->
+                <a href="/admin-portal/view/users" target="" class="text-gray-800 hover:text-gray-600">View Users</a>
+                <a href="/admin-portal/view/plans" target="" class="text-gray-800 hover:text-gray-600">View Plans</a>
+                <a href="/admin-portal/view/services" target="" class="text-gray-800 hover:text-gray-600">View Treatments</a>
+                <a href="/admin-portal/view/subscriptions" target="" class="text-gray-800 hover:text-gray-600">View Subscriptions</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="container mx-auto p-4">
+            <div class="flex space-x-4 text-xl">
+                <a href="/" target="" class="text-gray-800 hover:text-gray-600">Home</a>
+
+
+                {% if g.has_subscription %}
+                    <a href="/member-portal/subscriptions/view_plan" target="" class="text-gray-800 hover:text-gray-600">View my plan</a>
+                {% else %}
+                    <a href="/member-portal/subscriptions/choose_plan" target="" class="text-gray-800 hover:text-gray-600">Select a plan</a>
+                {% endif %}
+                <a href="/member-portal/make-claim" target="" class="text-gray-800 hover:text-gray-600">Make a claim</a>
+                <a href="/member-portal/claims" target="" class="text-gray-800 hover:text-gray-600">My claims</a>
+                <a href="/member-portal/documents" target="" class="text-gray-800 hover:text-gray-600">My documents</a>
+                <a href="/member-portal/refer-a-friend" target="" class="text-gray-800 hover:text-gray-600">Refer a friend</a>
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+{% endif %}

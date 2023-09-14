@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <!-- Add SweetAlert2 CSS and JS links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-200">
+    <div class="container mx-auto pb-16">
+        {% include 'header.html' %}
+        {% include 'components/add_plan_component.html' %}
+        {% include 'components/view_plans_component.html' %}
+    </div>
+    <script src="{{ url_for('static', filename='js/plans.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- Plan Add Form -->
+<div class="my-6 bg-white p-4 rounded-md shadow-md relative">
+    <!-- Toggle Button -->
+    <button id="togglePlanForm" class="absolute top-0 right-0 m-2 bg-blue-950 text-white px-3 py-1 rounded-full focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        -
+    </button>
+
+    <h2 class="text-xl font-bold">Add New Plan</h2>
+    <form id="addPlanForm" method="post">
+        <div class="mb-4">
+            <label for="plan_name" class="block text-sm font-medium text-gray-600">Plan Name</label>
+            <input type="text" id="plan_name" name="plan_name" required class="mt-1 px-3 py-2 border rounded-md w-full focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        </div>
+        <div class="mb-4">
+            <label for="plan_price" class="block text-sm font-medium text-gray-600">Monthly Plan Price</label>
+            <input type="number" step="0.01" id="plan_price" name="plan_price" required class="mt-1 px-3 py-2 border rounded-md w-full focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+        </div>
+        <div class="flex mb-4 space-x-4">
+            <div class="flex-1">
+                <label class="block text-sm font-medium text-gray-600">Available Treatments</label>
+                <select id="available_services" multiple class="mt-1 px-3 py-2 border rounded-md w-full h-32 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+                    <!-- JavaScript will populate this -->
+                </select>
+            </div>
+            <div class="flex flex-col justify-center">
+                <button type="button" id="addServiceBtn" class="mb-2 bg-blue-950 text-white px-4 py-2 rounded hover:bg-indigo-700 transition duration-300 ease-in-out focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50">&gt;&gt;</button>
+                <button type="button" id="removeServiceBtn" class="bg-blue-950 text-white px-4 py-2 rounded hover:bg-indigo-700 transition duration-300 ease-in-out focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50">&lt;&lt;</button>
+            </div>
+<!--            <div class="flex-1">-->
+<!--                <label class="block text-sm font-medium text-gray-600">Selected Treatments</label>-->
+<!--                <select id="selected_services" name="services[]" multiple class="mt-1 px-3 py-2 border rounded-md w-full h-32 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">-->
+<!--                    &lt;!&ndash; User-selected services will be here &ndash;&gt;-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="flex-1">
+                <label class="block text-sm font-medium text-gray-600">Selected Treatments</label>
+                <div id="selected_services" class="border rounded-md px-3 py-2 mt-1">
+                    <!-- Dynamically added services with input for max usage count will appear here -->
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="bg-blue-950 text-white px-4 py-2 rounded hover:bg-indigo-700 transition duration-300 ease-in-out focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+            Create Plan
+        </button>
+    </form>
+</div>

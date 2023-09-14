@@ -1,0 +1,76 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Questrial&display=swap');
+
+.slot-container {
+    overflow: hidden;
+    height: 4rem; /* Adjusted for text-6xl height */
+    line-height: 4rem; /* Adjusted for text-6xl line height */
+    position: relative;
+}
+
+.slot {
+    animation: slotAnimation 16s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes slotAnimation {
+    0%, 20% {
+        transform: translateY(0);
+    }
+    25%, 45% {
+        transform: translateY(-4rem); /* Adjusted for text-6xl height */
+    }
+    50%, 70% {
+        transform: translateY(-8rem); /* Adjusted for 2 times text-6xl height */
+    }
+    75%, 95% {
+        transform: translateY(-12rem); /* Adjusted for 3 times text-6xl height */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(15px);
+  }
+}
+
+.arrow-svg {
+  transition: transform 0.5s ease-out;
+}
+
+a:hover .arrow-svg {
+  transform: translateX(15px);
+}
+
+.top-right-corner-alert {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    min-width: 250px !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+}
+
+/* Styles for the form */
+#addPlanForm {
+    transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
+    max-height: 1000px;  /* Sufficiently large value */
+    opacity: 1;
+    overflow: hidden;
+}
+
+/* Styles for the hidden state */
+#addPlanForm.hidden {
+    max-height: 0;
+    opacity: 0;
+}

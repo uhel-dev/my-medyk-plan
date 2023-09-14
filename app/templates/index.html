@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home - My Medyk Plan</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+        <script src="{{ url_for('static', filename='js/slot-animation.js') }}"></script>
+    </head>
+    <body class="font-oswald text-blue-950">
+        <div class="grid grid-cols-1">
+
+            {% include 'header.html' %}
+            {% include 'components/hero.html' %}
+
+            {% include 'components/health_plan_steps.html' %}
+            <div class="flex items-center justify-center p-4 pb-16">
+                <div class="h-0.5 bg-indigo-100 w-4/5 my-4"></div>
+            </div>
+            {% include 'components/usp_grid.html' %}
+            <div class="flex items-center justify-center p-4 py-16">
+                <div class="h-0.5 bg-orange-200 w-4/5 my-4"></div>
+            </div>
+            {% set isSingular = True %}
+            {% include 'components/trusted_by.html' %}
+            {% include 'components/join_cta.html' %}
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>

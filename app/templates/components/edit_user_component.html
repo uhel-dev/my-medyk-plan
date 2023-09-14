@@ -1,0 +1,31 @@
+<div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto mt-10">
+    <h2 class="text-2xl font-semibold mb-5 text-gray-700">User Details</h2>
+
+    <div class="mb-4">
+        <h4 class="text-lg font-medium text-gray-600">Full Name:</h4>
+        <p class="text-gray-800 mt-1">{{ user.full_name }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h4 class="text-lg font-medium text-gray-600">Email:</h4>
+        <p class="text-gray-800 mt-1">{{ user.email }}</p>
+    </div>
+
+    <div class="mb-4">
+        <h4 class="text-lg font-medium text-gray-600">Subscription Plan:</h4>
+        <p class="text-gray-800 mt-1">{{ user.plan_name }}</p>
+    </div>
+
+        <!-- Subscription Cost -->
+    <div class="mb-4">
+        <h4 class="text-lg font-medium text-gray-600">Subscription Cost:</h4>
+        <p class="text-gray-800 mt-1">{{ customer_subscriptions.data[0].plan.currency | upper }} {{ "%.2f" | format(customer_subscriptions.data[0].plan.amount / 100.0) }} / {{ customer_subscriptions.data[0].plan.interval }}</p>
+    </div>
+
+    <!-- Edit Button -->
+    <div class="mt-6">
+        <a href="/admin-portal/edit/user/{{ user.id }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300">
+            Edit User
+        </a>
+    </div>
+</div>

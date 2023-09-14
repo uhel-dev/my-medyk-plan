@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Plans</h2>
+    <form method="post" action="{{ url_for('subscriptions.subscribe') }}">
+        <div class="form-group">
+            <label for="plan">Select Plan:</label>
+            <select name="plan" id="plan" class="form-control">
+                <option value="basic">Basic Plan</option>
+                <option value="premium">Premium Plan</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+{% endblock %}

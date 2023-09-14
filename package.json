@@ -1,0 +1,24 @@
+{
+  "name": "my-medyk-plan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:css": "postcss app/static/css/styles.css -o app/static/css/output.css -w",
+    "stripe:forward": "stripe listen --forward-to localhost:8000/webhook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.15",
+    "font-awesome": "^4.7.0",
+    "postcss": "^8.4.29"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.3"
+  }
+}

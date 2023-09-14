@@ -1,0 +1,35 @@
+<!-- Container for the Plans -->
+<div class="bg-white p-4 rounded-md shadow-md my-8">
+    <div class="container mx-auto py-4">
+
+        <!-- Title -->
+        <h2 class="text-2xl font-bold mb-5">Plans List</h2>
+
+        <!-- Plans Grid Container -->
+        <div id="plansContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Plan cards will be dynamically appended here by JS -->
+        </div>
+
+        <!-- No Plans Message -->
+        <div id="noPlansMessage" class="text-gray-600 mt-4">
+            No plans at the moment, add one.
+        </div>
+
+        <!-- Plans Card Component Template (Hidden) -->
+        <div id="planCardTemplate" style="display: none;">
+            <div class="planCard p-4 bg-gray-100 rounded-md shadow-md">
+
+                <!-- Header: Plan Name (left) and Delete Button (right) -->
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="planName text-lg font-bold"></h3>
+                    <img class="deletePlanBtn cursor-pointer hover:opacity-70 transition duration-300 ease-in-out" src="/static/images/trash-bin.svg" alt="Delete" title="Delete Plan" style="width: 24px; height: 24px;">
+                </div>
+
+                <p class="planPrice text-green-600 font-semibold mb-3"></p>
+                <div class="planServices grid gap-2"></div> <!-- Container for the service divs -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
